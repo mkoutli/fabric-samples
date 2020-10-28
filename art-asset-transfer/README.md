@@ -1,3 +1,7 @@
+### Prerequisites
+
+[Fabric Prerequisites](https://hyperledger-fabric.readthedocs.io/en/release-2.2/prereqs.html)
+
 ### To install the app and fabric-specific components
 
 Create a new folder and `cd` into that folder (which is currently empty)
