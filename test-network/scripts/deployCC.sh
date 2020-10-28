@@ -42,6 +42,9 @@ if [ "$CC_SRC_PATH" = "NA" ]; then
   if [ "$CC_NAME" = "basic" ]; then
     println $'\e[0;32m'asset-transfer-basic$'\e[0m' chaincode
     CC_SRC_PATH="../asset-transfer-basic"
+  if [ "$CC_NAME" = "art" ]; then
+    println $'\e[0;32m'art-asset-transfer$'\e[0m' chaincode
+    CC_SRC_PATH="../art-asset-transfer"
   elif [ "$CC_NAME" = "secured" ]; then
     println $'\e[0;32m'asset-transfer-secured-agreeement$'\e[0m' chaincode
     CC_SRC_PATH="../asset-transfer-secured-agreement"
