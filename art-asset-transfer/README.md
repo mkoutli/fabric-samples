@@ -29,7 +29,7 @@ Launch the Fabric test network using the network.sh shell script.
 ```
 Next, let’s deploy the chaincode by calling the ./network.sh script with the chaincode name and language options.
 ```bash
-./network.sh deployCC -ccn basic -ccl javascript
+./network.sh deployCC -ccn art -ccl javascript
 ```
 ### To run the app
 ```bash
