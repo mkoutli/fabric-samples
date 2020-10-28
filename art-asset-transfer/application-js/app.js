@@ -151,6 +151,15 @@ async function getAllAssets() {
 }
 
 async function updateAsset(updatedAsset) {
+	// parse body json
+	var id = updatedAsset.id;
+	var color = updatedAsset.color;
+	var size = updatedAsset.size;
+	var owner = updatedAsset.owner;
+	var appraisedValue = updatedAsset.appraisedValue;
+	console.log(id, color, size, owner, appraisedValue);
+
+
 	// build an in memory object with the network configuration (also known as a connection profile)
 	const ccp = buildCCPOrg1();
 	const gateway = new Gateway();
@@ -176,9 +185,10 @@ async function updateAsset(updatedAsset) {
 				// How about we try a transactions where the executing chaincode throws an error
 				// Notice how the submitTransaction will throw an error containing the error thrown by the chaincode
 				console.log('\n--> Submit Transaction: UpdateAsset');
-				result = await contract.submitTransaction('UpdateAsset', 'asset1', 'blue', '5', 'Tomoko', '350');
+				result = await contract.submitTransaction('UpdateAsset', id, color, size, owner, appraisedValue);
 			} catch (error) {
 				console.log(`*** Successfully caught the error: \n    ${error}`);
+				return '{"type":"error"}';
 			}
 			
 		} finally {

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <!-- WRAPPER -->
+    <div id="wrapper">
+      <!-- USER LIST -->
+      <h2>Asset List</h2>
+      <div id="userList">
+        <table>
+          <thead>
+            <th>id</th>
+            <th>color</th>
+            <th>size</th>
+            <th>owner</th>
+            <th>appraisedValue</th>
+            <th>Update</th>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+      <!-- /USER LIST -->
+    </div>
+    <!-- /WRAPPER -->
+  </body>
+  <script>
+  	// Empty content string
+    var tableContent = '';
+  	$.getJSON('/users/userlist', function(data) {
+    console.log(data);
+    // For each item in our JSON, add a table row and cells to the content string
+    $.each(data, function(){
+      tableContent += '<tr>';
+      tableContent += '<td>' + this.Record.ID + '</td>';
+      tableContent += '<td>' + this.Record.Color + '</td>';
+      tableContent += '<td>' + this.Record.Size + '</td>';
+      tableContent += '<td>' + this.Record.Owner + '</td>';
+      tableContent += '<td>' + this.Record.AppraisedValue + '</td>';
+      tableContent += '<td><a href="#" class="linkdeleteuser" rel="' + this.Record.ID + '">update</a></td>';
+      tableContent += '</tr>';
+    });
+
+    // Inject the whole content string into our existing HTML table
+    $('#userList table tbody').html(tableContent);
+});
+  </script>
+</html>
